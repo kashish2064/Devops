@@ -1,0 +1,5 @@
+import { images, type Template } from '@/lib/studio/templates';
+export function InvitationArt({template,firstName,secondName,date,venue}:{template:Template;firstName?:string;secondName?:string;date?:string;venue?:string}) {
+ const photo=['photo','split'].includes(template.style); const floral=['floral','botanical'].includes(template.style); const nepali=template.style==='nepali';
+ return <div className={`invitation-art art-${template.style}`}>{(photo||floral)&&<img className="invitation-art-photo" src={photo?images.couple:images.floral} alt=""/>}<div className="invitation-art-copy"><div className="invite-eyebrow">{nepali?'शुभ विवाह':'Together with their families'}</div><div className="invite-names">{firstName??(nepali?'आर्या':'Olivia')}<span className="invite-amp">&</span>{secondName??(nepali?'आदित्य':'James')}</div><div className="invite-eyebrow">{nepali?'सप्रेम निमन्त्रणा':'Joyfully invite you to their wedding'}</div><div className="invite-line"/><div className="invite-date">{date??'June 14, 2027'}</div><div className="invite-venue">{venue??'Villa Balbiano, Lake Como'}</div></div></div>;
+}
